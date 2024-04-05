@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      /* Lighter shade of white */
+      background-image: linear-gradient(rgba(191, 205, 203, 0.2), rgba(194, 214, 212, 0.2));
+    }
+
+    /* Custom CSS for sidebar */
+    .sidebar {
+      width: 12.5%; 
+      background-color: #f8f9fa;
+      height: 100vh; /* Set sidebar height to match viewport */
+    }
+
+    .sidebar .list-group-item {
+      border: none;
+      border-radius: 0;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add square shadow effect */
+      color: #000;
+      position: relative; /* Add relative positioning */
+      padding-right: 30px; /* Add right padding to make space for the arrow */
+    }
+
+    .sidebar .list-group-item::after {
+      content: "\f105"; /* Unicode for the arrow symbol (FontAwesome) */
+      font-family: "Font Awesome 5 Free"; /* Font Awesome font family */
+      position: absolute; /* Position the arrow absolutely */
+      top: 50%; /* Move the arrow vertically to the middle */
+      right: 10px; /* Adjust the right position of the arrow */
+      transform: translateY(-50%); /* Center the arrow vertically */
+      font-weight: 900; /* Set font weight to bold */
+    }
+
+
+    /* Custom CSS for header and footer */
+    header {
+      background: linear-gradient(to right, #3C565B, #B2BEB5); /* Darker green to lighter green gradient */
+      color: #fff;
+    }
+
+    footer {
+      background: linear-gradient(to right, #3C565B, #B2BEB5); /* Darker green to lighter green gradient */
+      color: #fff;
+    }
+
+    /* Custom CSS for navigation links */
+    .navbar-nav .nav-link {
+      margin-right: 20px; /* Increase the gap between each link */
+      font-weight: bold; /* Make the text bold */
+      color: #fff !important; /* Set the font color to white */
+    }
+
+    /* Custom CSS for profile card */
+    .profile-card {
+      width: 150px; /* Set the width to a specific value, such as 300 pixels */
+      margin: 20px -30px 20px 0; /* Shift the card more to the left horizontally */
+    }
+
+    .card-img-top {
+      width: 50%; /* Adjust the width of the image */
+      margin: 0 auto; /* Center the image horizontally */
+    }
+
+    /* Custom CSS for scrollable pane */
+    .scrollable-pane {
+      height: calc(100vh - 56px); /* Subtract the header height from the viewport height */
+      overflow-y: auto; /* Enable vertical scrolling */
+      padding-right: 0 !important; /* Disable right padding to prevent horizontal scrollbar */
+    }
+  </style>
+  <title>My Web Page</title>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+      <a class="navbar-brand text-white" href="#">Valinor</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto"> <!-- Utilize ml-auto class to push links to the right -->
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2 sidebar">
+        <aside>
+          <div class="card profile-card">
+            <img class="card-img-top" src="Images/Image01.png" alt="Profile Picture">
+            <div class="card-body">
+              <h5 class="card-title">John Doe</h5>
+              <p class="card-text">Pharma Kalutara</p>
+            </div>
+          </div>
+          <div class="list-group">
+            <a href="#" class="list-group-item">Place Order</a>
+            <a href="#" class="list-group-item">All Orders</a>
+            <a href="#" class="list-group-item">Pending Orders</a>
+            <a href="#" class="list-group-item">Processed Orders</a>
+            <a href="#" class="list-group-item">Delivered Orders</a>
+            <a href="#" class="list-group-item">Cancelled Orders</a>
+            <a href="#" class="list-group-item">Order History</a>
+          </div>
+        </aside>
+      </div>
+      <div class="col-md-10 scrollable-pane">
+        <main>
+          <!-- Content goes here -->
+          <!-- Add your content here -->
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                
+                
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-transparent">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p>&copy; 2023 My Web Page. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
+  <style>
+   
+   body {
+    font-family: 'League Spartan', sans-serif;
+      background-color: #fcfcfc;
+      background-image: linear-gradient(rgb(241, 241, 241), rgb(247, 246, 246));
+    }
+
+    /*sidebar */
+    .sidebar {
+      width: 12.5%;
+      background-color: #f8f9fa;
+      height: 100vh;
+      /* Set sidebar height to match viewport */
+    }
+
+    .sidebar .list-group-item {
+      border: none;
+      border-radius: 0;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      /* Add square shadow effect */
+      color: #000;
+      position: relative;
+      padding-right: 30px;
+      /* Add right padding to make space for the arrow */
+      text-decoration: none;
+      /* Remove underline */
+      font-size: 18px; 
+    }
+
+    .sidebar .list-group-item::after {
+      content: "\f105";
+      /* Unicode for the arrow symbol (FontAwesome) */
+      font-family: "Font Awesome 5 Free";
+      /* Font Awesome font family */
+      position: absolute;
+      /* Position the arrow absolutely */
+      top: 50%;
+      /* Move the arrow vertically to the middle */
+      right: 10px;
+      /* Adjust the right position of the arrow */
+      transform: translateY(-50%);
+      /* Center the arrow vertically */
+      font-weight: 900;
+      /* Set font weight to bold */
+    }
+
+    .sidebar .list-group-item:hover,
+    .sidebar .list-group-item.active {
+      background-color: #ffa264; 
+      color: #ffffff;
+      text-decoration: none; /* remove underline */
+    }
+
+    .sidebar .list-group-item:hover::after,
+    .sidebar .list-group-item.active::after {
+      color: #fff; /* Change the color of the Font Awesome icon */
+    }
+
+
+    /* Custom CSS for header and footer */
+    header {
+      background: linear-gradient(to right, #ffa264, #ffa467dc);
+      box-shadow: inset 0px 0px 5px 2px rgba(221, 117, 14, 0.493);
+      color: #000;
+      /* Set text color to black */
+      position: relative;
+    }
+
+    .navbar-nav.ml-auto .nav-item {
+      margin-left: 30px; /* Adjust the gap between each navigation link */
+    }
+
+    .navbar-nav.ml-auto .nav-link {
+        font-size: 18px; /* Increase the font size to 24px */
+      }
+
+  /* Custom CSS for logout button */
+  .navbar-nav .logout-btn {
+      background-color: #e67d27;
+      /* Set background color to match the shadow color */
+      border-radius: 50px;
+      /* Create a pill shape */
+      padding: 5px 15px;
+      /* Add some padding to the button */
+      color: #000 !important;
+      /* Set the font color to black */
+    }
+
+
+    footer {
+      background: linear-gradient(to right, #ffa264, #ffa467dc);
+      box-shadow: inset 0px 0px 5px 2px rgba(221, 117, 14, 0.493);
+      color: #000; 
+    /* Set text color to white */
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    }
+
+    /* Custom CSS for profile card */
+    .profile-card {
+      width: 150px;
+      /* Set the width to a specific value, such as 300 pixels */
+      margin: 20px -30px 20px 0;
+      /* Shift the card more to the left horizontally */
+      font-size: 18px; 
+    }
+
+    .card-img-top {
+      width: 50%;
+      /* Adjust the width of the image */
+      margin: 0 auto;
+      /* Center the image horizontally */
+    }
+
+    /* CSS for scrollable pane */
+    .scrollable-pane {
+      height: calc(100vh - 56px);
+      /* Subtract the header height from the viewport height */
+      overflow-y: auto;
+      /* Enable vertical scrolling */
+      padding-right: 0 !important;
+      /* Disable right padding to prevent horizontal scrollbar */
+    }
+
+    .content-section {
+      display: none;
+      /* Initially hide the content sections */
+    }
+
+    .content-section.active {
+      display: block;
+      /* Show the active content section */
+    }
+
+    /*CSS for the order form */
+    .order-form {
+      margin-top: 4rem;
+  max-width: 820px; /* Increase the max-width value to make the card wider */
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  background-image: linear-gradient(rgb(255, 250, 246), rgb(255, 252, 249))
+    }
+
+    /*CSS for the submit button */
+    .submit-button {
+      background-color: #ffa264;
+      color: rgb(0, 0, 0);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 18px; 
+    }
+
+    .cart-item-card {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 10px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .cart-item-card span {
+      margin-right: 20px;
+    }
+
+    .cart-item-delete {
+      background-color: #dc3545;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+      margin-left: auto; 
+    }
+
+    /* Order Card CSS */
+    .order-card {
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      margin-bottom: 10px;
+      padding: 10px;
+    }
+
+    .order-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .order-items {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .order-items.expanded {
+      display: block;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
+  <title>User Dashboard</title>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+      <a class="navbar-brand" href="#"><img src="Images/Valinor.png" alt="Valinor Logo"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link underline" href="#"><b>Dashboard</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link colored" href="#"><b>Profile</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link logout-btn" href="#"><b>Logout</b></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2 sidebar">
+        <aside>
+          <div class="card profile-card">
+            <img class="card-img-top" src="Images/Image01.png" alt="Profile Picture">
+            <div class="card-body">
+              <h5 class="card-title">John Doe</h5>
+              <p class="card-text">Example Pharmacy</p>
+            </div>
+          </div>
+          <div class="list-group">
+            <a href="#place-order-pane" class="list-group-item"><b>Place Order</b></a>
+            <a href="#my-cart-pane" class="list-group-item"><b>My Cart</b></a>
+            <a href="#all-orders-pane" class="list-group-item"><b>All Orders</b></a>
+            <a href="#pending-orders-pane" class="list-group-item"><b>Pending Orders</b></a>
+            <a href="#processed-orders-pane" class="list-group-item"><b>Processed Orders</b></a>
+            <a href="#delivered-orders-pane" class="list-group-item"><b>Delivered Orders</b></a>
+            <a href="#cancelled-orders-pane" class="list-group-item"><b>Cancelled Orders</b></a>
+            <a href="#order-history-pane" class="list-group-item"><b>Order History</b></a>
+          </div>
+        </aside>
+      </div>
+      <div class="col-md-10 scrollable-pane">
+        <main>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div id="place-order-pane" class="content-section active">
+                  <br>
+                  <h4><b>Place Order</b></h4>
+                  <div class="order-form">
+                    <form>
+                      <div class="form-group">
+                        <label for="item">Item:</label>
+                        <select class="form-control" id="item-select">
+                          <option value="item1">Item 1</option>
+                          <option value="item2">Item 2</option>
+                          <option value="item3">Item 3</option>
+                          <option value="item4">Item 4</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="quantity">Quantity:</label>
+                        <select class="form-control" id="quantity">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select>
+                      </div>
+                      <button type="button" class="submit-button" onclick="addToCart()"><b>Add to Cart</b></button>
+                    </form>
+                  </div>
+                </div>
+                <div id="my-cart-pane" class="content-section">
+                  <br>
+                  <h4><b>My Cart</b></h4>
+                  <div id="cart-items-container"class="cart-items-container" >
+
+                  </div>
+                </div>
+                <div id="all-orders-pane" class="content-section">
+                  <br>
+                  <h4><b>All Orders</b></h4>
+                  <br>
+ 
+                  <div class="order-cards-container"></div>
+
+                </div>
+                <div id="pending-orders-pane" class="content-section">
+                  <h2>Pending Orders</h2>
+                  <br>
+                  <div class="order-cards-container pending-orders"></div>
+                </div>
+                <div id="processed-orders-pane" class="content-section">
+                  <h2>Processed Orders</h2>
+                  <br>
+                  <div class="order-cards-container processed-orders"></div>
+                </div>
+                <div id="delivered-orders-pane" class="content-section">
+                  <h2>Delivered Orders</h2>
+                  <br>
+                  <div class="order-cards-container delivered-orders"></div>
+                </div>
+                <div id="cancelled-orders-pane" class="content-section">
+                  <h2>Cancelled Orders</h2>
+                  <br>
+                  <div class="order-cards-container cancelled-orders"></div>
+                </div>
+                <div id="order-history-pane" class="content-section">
+                  <h2>Order History</h2>
+                  <br>
+                  <div class="order-cards-container order-history"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-transparent">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p>&copy; 2023 My Web Page. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+  <script>
+     document.addEventListener("DOMContentLoaded", function () {
+      var links = document.querySelectorAll(".list-group-item");
+      var contentSections = document.querySelectorAll(".content-section");
+
+      // Add class "active" to the "Dashboard" link to underline it
+      links[0].classList.add("active");
+
+      // Add class "active" to the "Pending Orders" link to color it
+      links[0].classList.add("colored");
+
+      links.forEach(function (link) {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          var target = this.getAttribute("href");
+          var targetSection = document.querySelector(target);
+
+          if (targetSection) {
+            contentSections.forEach(function (section) {
+              section.classList.remove("active");
+            });
+
+            links.forEach(function (link) {
+              link.classList.remove("active");
+              link.classList.remove("colored");
+            });
+
+            targetSection.classList.add("active");
+            this.classList.add("active");
+
+            // Add class "colored" to the clicked link
+            if (target === "#pending-order-pane") {
+              this.classList.add("colored");
+            }
+          }
+        });
+      });
+    });
+
+    // Function to add items to the cart
+    function addToCart() {
+      // Get the selected item and quantity from the form
+      var selectedItem = document.getElementById("item-select").value;
+      var selectedQuantity = document.getElementById("quantity").value;
+
+      // Create a new card element
+      var card = document.createElement("div");
+      card.className = "cart-item-card";
+
+      // Create the item ID element
+      var itemId = document.createElement("span");
+      itemId.className = "cart-item-id";
+      itemId.textContent = selectedItem;
+      card.appendChild(itemId);
+
+      // Create the item Name element
+      var itemName = document.createElement("span");
+      itemName.className = "cart-item-name";
+      itemName.textContent = "Item Name";
+      card.appendChild(itemName);
+
+      // Create the item Quantity element
+      var itemQuantity = document.createElement("span");
+      itemQuantity.className = "cart-item-quantity";
+      itemQuantity.textContent = selectedQuantity;
+      card.appendChild(itemQuantity);
+
+      // Create the delete button element
+      var deleteButton = document.createElement("button");
+      deleteButton.className = "cart-item-delete";
+      deleteButton.textContent = "Delete";
+      card.appendChild(deleteButton);
+
+      // Append the card to the cart items container
+      document.getElementById("cart-items-container").appendChild(card);
+    }
+
+    // Add some example orders
+    var orders = [
+      {
+        id: "order1",
+        items: ["Item 1", "Item 2", "Item 3"],
+      },
+      {
+        id: "order2",
+        items: ["Item 4", "Item 5"],
+      },
+      {
+        id: "order3",
+        items: ["Item 6"],
+      },
+    ];
+
+    // Function to toggle the expanded state of the order card
+    function toggleOrderCard(orderId) {
+      var orderCard = document.getElementById(orderId);
+      var orderItems = orderCard.querySelector(".order-items");
+
+      orderItems.classList.toggle("expanded");
+    }
+
+    // Render the order cards
+    function renderOrderCards() {
+      var orderCardsContainer = document.querySelector(".order-cards-container");
+
+      orders.forEach(function (order) {
+        var orderCard = document.createElement("div");
+        orderCard.className = "order-card";
+        orderCard.id = order.id;
+
+        var orderHeader = document.createElement("div");
+        orderHeader.className = "order-header";
+
+        var orderId = document.createElement("span");
+        orderId.textContent = "Order ID: " + order.id;
+        orderHeader.appendChild(orderId);
+
+        var viewOrderButton = document.createElement("button");
+        viewOrderButton.className = "view-order-button";
+        viewOrderButton.textContent = "View Order";
+        viewOrderButton.addEventListener("click", function () {
+          toggleOrderCard(order.id);
+        });
+        orderHeader.appendChild(viewOrderButton);
+
+        orderCard.appendChild(orderHeader);
+
+        var orderItems = document.createElement("div");
+        orderItems.className = "order-items";
+
+        order.items.forEach(function (item) {
+          var itemElement = document.createElement("p");
+          itemElement.textContent = item;
+          orderItems.appendChild(itemElement);
+        });
+
+        orderCard.appendChild(orderItems);
+
+        orderCardsContainer.appendChild(orderCard);
+      });
+    }
+
+    renderOrderCards();
+
+    // Add some example pending orders
+    var pendingOrders = [
+      {
+        id: "pendingOrder1",
+        items: ["Item A", "Item B", "Item C"],
+      },
+      {
+        id: "pendingOrder2",
+        items: ["Item X", "Item Y"],
+      },
+    ];
+
+    // Render the pending order cards
+    function renderPendingOrderCards(orders) {
+      var pendingOrdersContainer = document.querySelector(".pending-orders");
+
+      orders.forEach(function (order) {
+        var orderCard = document.createElement("div");
+        orderCard.className = "order-card";
+        orderCard.id = order.id;
+
+        var orderHeader = document.createElement("div");
+        orderHeader.className = "order-header";
+
+        var orderId = document.createElement("span");
+        orderId.textContent = "Order ID: " + order.id;
+        orderHeader.appendChild(orderId);
+
+        var viewOrderButton = document.createElement("button");
+        viewOrderButton.className = "view-order-button";
+        viewOrderButton.textContent = "View Order";
+        viewOrderButton.addEventListener("click", function () {
+          toggleOrderCard(order.id);
+        });
+        orderHeader.appendChild(viewOrderButton);
+
+        orderCard.appendChild(orderHeader);
+
+        var orderItems = document.createElement("div");
+        orderItems.className = "order-items";
+
+        order.items.forEach(function (item) {
+          var itemElement = document.createElement("p");
+          itemElement.textContent = item;
+          orderItems.appendChild(itemElement);
+        });
+
+        orderCard.appendChild(orderItems);
+
+        pendingOrdersContainer.appendChild(orderCard);
+      });
+    }
+
+    renderPendingOrderCards(pendingOrders);
+
+    // Add some example processed orders
+    var processedOrders = [
+      {
+        id: "processedOrder1",
+        items: ["Item M", "Item N"],
+      },
+      {
+        id: "processedOrder2",
+        items: ["Item P", "Item Q", "Item R"],
+      },
+    ];
+
+    // Render the order cards for processed orders
+    function renderProcessedOrders(orders) {
+      var processedOrdersContainer = document.querySelector(".processed-orders");
+
+      orders.forEach(function (order) {
+        var orderCard = document.createElement("div");
+        orderCard.className = "order-card";
+        orderCard.id = order.id;
+
+        var orderHeader = document.createElement("div");
+        orderHeader.className = "order-header";
+
+        var orderId = document.createElement("span");
+        orderId.textContent = "Order ID: " + order.id;
+        orderHeader.appendChild(orderId);
+
+        var viewOrderButton = document.createElement("button");
+        viewOrderButton.className = "view-order-button";
+        viewOrderButton.textContent = "View Order";
+        viewOrderButton.addEventListener("click", function () {
+          toggleOrderCard(order.id);
+        });
+        orderHeader.appendChild(viewOrderButton);
+
+        orderCard.appendChild(orderHeader);
+
+        var orderItems = document.createElement("div");
+        orderItems.className = "order-items";
+
+        order.items.forEach(function (item) {
+          var itemElement = document.createElement("p");
+          itemElement.textContent = item;
+          orderItems.appendChild(itemElement);
+        });
+
+        orderCard.appendChild(orderItems);
+
+        processedOrdersContainer.appendChild(orderCard);
+      });
+    }
+
+    renderProcessedOrders(processedOrders);
+
+    // Add some example delivered orders
+    var deliveredOrders = [
+      {
+        id: "deliveredOrder1",
+        items: ["Item X", "Item Y"],
+      },
+      {
+        id: "deliveredOrder2",
+        items: ["Item Z"],
+      },
+    ];
+
+    // Render the order cards for delivered orders
+    function renderDeliveredOrders(orders) {
+      var deliveredOrdersContainer = document.querySelector(".delivered-orders");
+
+      orders.forEach(function (order) {
+        var orderCard = document.createElement("div");
+        orderCard.className = "order-card";
+        orderCard.id = order.id;
+
+        var orderHeader = document.createElement("div");
+        orderHeader.className = "order-header";
+
+        var orderId = document.createElement("span");
+        orderId.textContent = "Order ID: " + order.id;
+        orderHeader.appendChild(orderId);
+
+        var viewOrderButton = document.createElement("button");
+        viewOrderButton.className = "view-order-button";
+        viewOrderButton.textContent = "View Order";
+        viewOrderButton.addEventListener("click", function () {
+          toggleOrderCard(order.id);
+        });
+        orderHeader.appendChild(viewOrderButton);
+
+        orderCard.appendChild(orderHeader);
+
+        var orderItems = document.createElement("div");
+        orderItems.className = "order-items";
+
+        order.items.forEach(function (item) {
+          var itemElement = document.createElement("p");
+          itemElement.textContent = item;
+          orderItems.appendChild(itemElement);
+        });
+
+        orderCard.appendChild(orderItems);
+
+        deliveredOrdersContainer.appendChild(orderCard);
+      });
+    }
+
+    renderDeliveredOrders(deliveredOrders);
+
+    // Add some example cancelled orders
+    var cancelledOrders = [
+      {
+        id: "cancelledOrder1",
+        items: ["Item A", "Item B"],
+      },
+      {
+        id: "cancelledOrder2",
+        items: ["Item C", "Item D", "Item E"],
+      },
+    ];
+
+    // Render the order cards for cancelled orders
+    function renderCancelledOrders(orders) {
+      var cancelledOrdersContainer = document.querySelector(".cancelled-orders");
+
+      orders.forEach(function (order) {
+        var orderCard = document.createElement("div");
+        orderCard.className = "order-card";
+        orderCard.id = order.id;
+
+        var orderHeader = document.createElement("div");
+        orderHeader.className = "order-header";
+
+        var orderId = document.createElement("span");
+        orderId.textContent = "Order ID: " + order.id;
+        orderHeader.appendChild(orderId);
+
+        var viewOrderButton = document.createElement("button");
+        viewOrderButton.className = "view-order-button";
+        viewOrderButton.textContent = "View Order";
+        viewOrderButton.addEventListener("click", function () {
+          toggleOrderCard(order.id);
+        });
+        orderHeader.appendChild(viewOrderButton);
+
+        orderCard.appendChild(orderHeader);
+
+        var orderItems = document.createElement("div");
+        orderItems.className = "order-items";
+
+        order.items.forEach(function (item) {
+          var itemElement = document.createElement("p");
+          itemElement.textContent = item;
+          orderItems.appendChild(itemElement);
+        });
+
+        orderCard.appendChild(orderItems);
+
+        cancelledOrdersContainer.appendChild(orderCard);
+      });
+    }
+
+    renderCancelledOrders(cancelledOrders);
+
+    // Add some example order history
+    var orderHistory = [
+      {
+        id: "history1",
+        items: ["Item A", "Item B", "Item C"],
+      },
+      {
+        id: "history2",
+        items: ["Item X", "Item Y"],
+      },
+    ];
+
+    // Render the order cards for order history
+    function renderOrderHistory(orders) {
+      var orderHistoryContainer = document.querySelector(".order-history");
+
+      orders.forEach(function (order) {
+        var orderCard = document.createElement("div");
+        orderCard.className = "order-card";
+        orderCard.id = order.id;
+
+        var orderHeader = document.createElement("div");
+        orderHeader.className = "order-header";
+
+        var orderId = document.createElement("span");
+        orderId.textContent = "Order ID: " + order.id;
+        orderHeader.appendChild(orderId);
+
+        var viewOrderButton = document.createElement("button");
+        viewOrderButton.className = "view-order-button";
+        viewOrderButton.textContent = "View Order";
+        viewOrderButton.addEventListener("click", function () {
+          toggleOrderCard(order.id);
+        });
+        orderHeader.appendChild(viewOrderButton);
+
+        orderCard.appendChild(orderHeader);
+
+        var orderItems = document.createElement("div");
+        orderItems.className = "order-items";
+
+        order.items.forEach(function (item) {
+          var itemElement = document.createElement("p");
+          itemElement.textContent = item;
+          orderItems.appendChild(itemElement);
+        });
+
+        orderCard.appendChild(orderItems);
+
+        orderHistoryContainer.appendChild(orderCard);
+      });
+    }
+
+    renderOrderHistory(orderHistory);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
+  <style>
+   
+   body {
+      background-color: #f8f9fa;
+      /* Lighter shade of white */
+      background-image: linear-gradient(rgba(191, 205, 203, 0.2), rgba(194, 214, 212, 0.2));
+    }
+
+    /* Custom CSS for sidebar */
+    .sidebar {
+      width: 12.5%;
+      background-color: #f8f9fa;
+      height: 100vh;
+      /* Set sidebar height to match viewport */
+    }
+
+    .sidebar .list-group-item {
+      border: none;
+      border-radius: 0;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      /* Add square shadow effect */
+      color: #000;
+      position: relative;
+      /* Add relative positioning */
+      padding-right: 30px;
+      /* Add right padding to make space for the arrow */
+    }
+
+    .sidebar .list-group-item::after {
+      content: "\f105";
+      /* Unicode for the arrow symbol (FontAwesome) */
+      font-family: "Font Awesome 5 Free";
+      /* Font Awesome font family */
+      position: absolute;
+      /* Position the arrow absolutely */
+      top: 50%;
+      /* Move the arrow vertically to the middle */
+      right: 10px;
+      /* Adjust the right position of the arrow */
+      transform: translateY(-50%);
+      /* Center the arrow vertically */
+      font-weight: 900;
+      /* Set font weight to bold */
+    }
+
+    /* Custom CSS for header and footer */
+    header {
+      background: linear-gradient(to right, #3C565B, #B2BEB5);
+      /* Darker green to lighter green gradient */
+      color: #fff;
+    }
+
+    footer {
+      background: linear-gradient(to right, #3C565B, #B2BEB5);
+      /* Darker green to lighter green gradient */
+      color: #fff;
+    }
+
+    /* Custom CSS for profile card */
+    .profile-card {
+      width: 150px;
+      /* Set the width to a specific value, such as 300 pixels */
+      margin: 20px -30px 20px 0;
+      /* Shift the card more to the left horizontally */
+    }
+
+    .card-img-top {
+      width: 50%;
+      /* Adjust the width of the image */
+      margin: 0 auto;
+      /* Center the image horizontally */
+    }
+
+    /* Custom CSS for scrollable pane */
+    .scrollable-pane {
+      height: calc(100vh - 56px);
+      /* Subtract the header height from the viewport height */
+      overflow-y: auto;
+      /* Enable vertical scrolling */
+      padding-right: 0 !important;
+      /* Disable right padding to prevent horizontal scrollbar */
+    }
+
+    .content-section {
+      display: none;
+      /* Initially hide the content sections */
+    }
+
+    .content-section.active {
+      display: block;
+      /* Show the active content section */
+    }
+
+    /* Custom CSS for the order form */
+    .order-form {
+      margin-top: 4rem ;
+      max-width: 500px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Custom CSS for the submit button */
+    .submit-button {
+      background-color: #3C565B;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+
+  </style>
+  <title>My Web Page</title>
+</head>
+
+<body>
+  <header>
+   
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+      <a class="navbar-brand text-white" href="#">Valinor</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="settingsDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-cog"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="settingsDropdown">
+              <a class="dropdown-item" href="#">Profile</a>
+              <a class="dropdown-item" href="#">Settings</a>
+              <a class="dropdown-item" href="#">Log out</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2 sidebar">
+        <aside>
+          <div class="card profile-card">
+            <img class="card-img-top" src="Images/Image01.png" alt="Profile Picture">
+            <div class="card-body">
+              <h5 class="card-title">John Doe</h5>
+              <p class="card-text">Example Pharmacy</p>
+            </div>
+          </div>
+          <div class="list-group">
+            <a href="#place-order-pane" class="list-group-item">Place Order</a>
+            <a href="#my-cart-pane" class="list-group-item">My Cart</a>
+            <a href="#all-orders-pane" class="list-group-item">All Orders</a>
+            <a href="#pending-orders-pane" class="list-group-item">Pending Orders</a>
+            <a href="#processed-orders-pane" class="list-group-item">Processed Orders</a>
+            <a href="#delivered-orders-pane" class="list-group-item">Delivered Orders</a>
+            <a href="#cancelled-orders-pane" class="list-group-item">Cancelled Orders</a>
+            <a href="#order-history-pane" class="list-group-item">Order History</a>
+          </div>
+        </aside>
+      </div>
+      <div class="col-md-10 scrollable-pane">
+        <main>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div id="place-order-pane" class="content-section active">
+                  <h2>Place Order</h2>
+                  <div class="order-form">
+                    <form>
+                      <div class="form-group">
+                        <label for="item">Item:</label>
+                        <select class="form-control" id="item-select">
+                          <option value="item1">Item 1</option>
+                          <option value="item2">Item 2</option>
+                          <option value="item3">Item 3</option>
+                          <option value="item4">Item 4</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="quantity">Quantity:</label>
+                        <select class="form-control" id="quantity">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select>
+                      </div>
+                      <button type="submit" class="submit-button">Add to Cart</button>
+                    </form>
+                  </div>
+                </div>
+                <div id="my-cart-pane" class="content-section">
+                  <h2>My Cart</h2>
+                  <p>This is the content for My Cart section.</p>
+                      <p>Sample text goes here...</p>
+                  </div>
+              <div id="all-orders-pane" class="content-section">
+                <h2>All Orders</h2>
+                <p>This is the content for All Orders section.</p>
+                <p>Long text goes here...</p>
+              </div>
+              <div id="pending-orders-pane" class="content-section">
+                <h2>Pending Orders</h2>
+                <p>This is the content for Pending Orders section.</p>
+                <p>Long text goes here...</p>
+              </div>
+              <div id="processed-orders-pane" class="content-section">
+                <h2>Processed Orders</h2>
+                <p>This is the content for Processed Orders section.</p>
+                <p>Long text goes here...</p>
+              </div>
+              <div id="delivered-orders-pane" class="content-section">
+                <h2>Delivered Orders</h2>
+                <p>This is the content for Delivered Orders section.</p>
+                <p>Long text goes here...</p>
+              </div>
+              <div id="cancelled-orders-pane" class="content-section">
+                <h2>Cancelled Orders</h2>
+                <p>This is the content for Cancelled Orders section.</p>
+                <p>Long text goes here...</p>
+              </div>
+              <div id="order-history-pane" class="content-section">
+                <h2>Order History</h2>
+                <p>This is the content for Order History section.</p>
+                <p>Long text goes here...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+
+  <footer class="bg-transparent">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p>&copy; 2023 My Web Page. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var links = document.querySelectorAll(".list-group-item");
+      var contentSections = document.querySelectorAll(".content-section");
+
+      links.forEach(function (link) {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          var target = this.getAttribute("href");
+          contentSections.forEach(function (section) {
+            section.classList.remove("active");
+          });
+          document.querySelector(target).classList.add("active");
+        });
+      });
+
+      $('#item-select').select2();
+    });
+  </script>
+</body>
+
+</html>

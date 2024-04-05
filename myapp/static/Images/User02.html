@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    body {
+  background-color: #f8f9fa;
+  /* Lighter shade of white */
+  background-image: linear-gradient(rgba(191, 205, 203, 0.2), rgba(194, 214, 212, 0.2));
+  
+    }
+    /* Custom CSS for sidebar */
+    .sidebar {
+      width: 12.5%; /* Approximately 1/8 of the total page width */
+      background-color: #f8f9fa;
+      height: 100vh; /* Set sidebar height to match viewport */
+    }
+
+    .sidebar .list-group-item {
+      border: none;
+      border-radius: 0;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add square shadow effect */
+    }
+
+    /* Custom CSS for header and footer */
+    header {
+      background: linear-gradient(to right, #3C565B, #B2BEB5); /* Darker green to lighter green gradient */
+      color: #fff;
+    }
+
+    footer {
+      background: linear-gradient(to right, #3C565B, #B2BEB5); /* Darker green to lighter green gradient */
+      color: #fff;
+    }
+
+    /* Custom CSS for navigation links */
+    .navbar-nav .nav-link {
+      margin-right: 20px; /* Increase the gap between each link */
+      font-weight: bold; /* Make the text bold */
+      color: #fff !important; /* Set the font color to white */
+    }
+
+    /* Custom CSS for profile card */
+    .profile-card {
+      width: 150px; /* Set the width to a specific value, such as 300 pixels */
+  margin: 20px -30px 20px 0; /* Shift the card more to the left horizontally */
+    }
+
+    .card-img-top {
+      width: 50%; /* Adjust the width of the image */
+      margin: 0 auto; /* Center the image horizontally */
+    }
+  </style>
+  <title>My Web Page</title>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+      <a class="navbar-brand text-white" href="#">Valinor</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto"> <!-- Utilize ml-auto class to push links to the right -->
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2 sidebar">
+        <aside>
+          <div class="card profile-card">
+            <img class="card-img-top" src="Images/Image01.png" alt="Profile Picture">
+            <div class="card-body">
+              <h5 class="card-title">John Doe</h5>
+              <p class="card-text">Web Developer</p>
+            </div>
+          </div>
+          <div class="list-group">
+            <a href="#" class="list-group-item">Dashboard</a>
+            <a href="#" class="list-group-item">Pending Orders</a>
+            <a href="#" class="list-group-item">Processed Orders</a>
+            <a href="#" class="list-group-item">Delivered Orders</a>
+            <a href="#" class="list-group-item">Cancelled Orders</a>
+            <a href="#" class="list-group-item">Order History</a>
+          </div>
+        </aside>
+      </div>
+      <div class="col-md-10">
+        <main>
+          <!-- Content goes here -->
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-transparent">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p>&copy; 2023 My Web Page. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

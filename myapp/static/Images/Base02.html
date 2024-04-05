@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'League Spartan', sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 120vh;
+      background-color: #fcfcfc;
+      background-image: linear-gradient(rgb(241, 241, 241), rgb(247, 246, 246));
+    }
+
+    /* header and footer */
+    header {
+      background: linear-gradient(to right, #ffa264, #ffa467dc);
+      box-shadow: inset 0px 0px 5px 2px rgba(221, 117, 14, 0.493);
+      color: #000;
+      /* Set text color to black */
+      position: relative;
+    }
+
+    .navbar-nav.ml-auto .nav-item {
+      margin-left: 30px; /* Adjust the gap between each navigation link */
+    }
+
+    .navbar-nav.ml-auto .nav-link {
+        font-size: 18px; /* Increase the font size to 24px */
+      }
+
+  /* Custom CSS for logout button */
+  .navbar-nav .logout-btn {
+      background-color: #e67d27;
+      /* Set background color to match the shadow color */
+      border-radius: 50px;
+      /* Create a pill shape */
+      padding: 5px 15px;
+      /* Add some padding to the button */
+      color: #000 !important;
+      /* Set the font color to black */
+    }
+
+
+    footer {
+      background: linear-gradient(to right, #ffa264, #ffa467dc);
+      box-shadow: inset 0px 0px 5px 2px rgba(221, 117, 14, 0.493);
+      color: #000; 
+    /* Set text color to white */
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    }
+
+    /* CSS for content sections */
+    .content-section {
+      display: none;
+      /* Initially hide the content sections */
+    }
+
+    .content-section.active {
+      display: block;
+      /* Show the active content section */
+    }
+
+    .navbar-nav .nav-item {
+      margin-right: 15px;
+    }
+
+    .navbar-nav .nav-link {
+      color: #000000 !important;
+      font-weight: bold;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
+  <title>User Profile</title>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+      <a class="navbar-brand" href="#"><img src="Images/Valinor.png" alt="Valinor Logo"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link underline" href="#"><b>Dashboard</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link colored" href="#"><b>Profile</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link logout-btn" href="#"><b>Logout</b></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+ 
+
+  <footer class="bg-transparent">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p>&copy; 2023 HYS. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

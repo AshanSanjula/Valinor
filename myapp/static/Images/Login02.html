@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: #f8f9fa;
+      /* Lighter shade of white */
+      background-image: linear-gradient(rgba(191, 205, 203, 0.2), rgba(194, 214, 212, 0.2));
+    }
+
+    /* Custom CSS for header and footer */
+    header {
+      background: linear-gradient(to right, #3C565B, #B2BEB5);
+      /* Darker green to lighter green gradient */
+      color: #fff;
+    }
+
+    footer {
+      background: linear-gradient(to right, #3C565B, #B2BEB5);
+      /* Darker green to lighter green gradient */
+      color: #fff;
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Custom CSS for navigation links */
+    .navbar-nav .nav-link {
+      margin-right: 20px;
+      /* Increase the gap between each link */
+      font-weight: bold;
+      /* Make the text bold */
+      color: #fff !important;
+      /* Set the font color to white */
+    }
+
+    /* Custom CSS for content box 1 */
+    .content-box1 {
+      margin-top: 4rem; /* Adjust the number of rows down from the top */
+      padding: 20px;
+      background-color: transparent;
+      max-width: 400px; /* Adjust the value to your desired width */
+      height: 450px;
+      margin-left: 6rem;
+      position: relative;
+    }
+
+    /* Custom CSS for login form */
+    .login-form {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fefefe; /* Set form background color to green */
+      padding: 30px;
+      width: 80%; /* Adjust the value to your desired width */
+      max-width: 400px; /* Set a max width to keep the form contained */
+    }
+
+    .login-form h2 {
+      margin-bottom: 20px;
+      text-align: left;
+      color: #606563;
+    }
+
+    .login-form .form-group {
+      margin-bottom: 20px;
+    }
+
+    .login-form label {
+      font-weight: bold;
+      color: #969f9e;
+    }
+
+    .login-form input {
+      width: 100%;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      color:#e1eceb;
+    }
+
+    .login-form button[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #889da1; /* Set button background color to match the header */
+      color: #b4cdc7;
+      font-weight: bold;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    /* Custom CSS for content box 2 */
+    .content-box2 {
+      margin-top: 5rem; /* Adjust the number of rows down from the top */
+      padding: 20px;
+      background-color: transparent;
+      max-width: 500px; /* Adjust the value to your desired width */
+      height: 400px;
+      margin-right: 6rem;
+      background-image: url("Images/Image04.png"); /* Replace with the correct image URL */
+      background-attachment: fixed;
+    }
+  </style>
+  <title>My Web Page</title>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+      <a class="navbar-brand text-white" href="#">Valinor</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <!-- Utilize ml-auto class to push links to the right -->
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <main>
+          <div class="content-box1">
+            <!-- Login form -->
+            <form class="login-form">
+              <h2>Login</h2>
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter username">
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter password">
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </main>
+      </div>
+      <div class="col-md-6">
+        <main>
+          <div class="content-box2"></div>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-transparent">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p>&copy; 2023 HYS. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
